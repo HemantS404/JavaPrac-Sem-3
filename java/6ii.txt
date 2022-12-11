@@ -1,0 +1,144 @@
+import java.util.*;
+
+class Execution{
+    public static int l;
+    public static int h;
+    public static int rev_num=0;
+    public static int sum=0;
+    public static int M(int a, int b){
+        if(l%a == 0 && l%b == 0){
+            return l;
+        }
+        else{
+            l++;
+            return M(a, b);
+        }
+    }
+    public static int N(int a, int b){
+        if(a%h == 0 && b%h == 0){
+            return h;
+        }
+        else{
+            h--;
+            return N(a, b);
+        }
+    }
+    public static int O(int x){
+        if(x == 0){
+            return rev_num;
+        }
+        else{
+            rev_num *= 10;
+            rev_num += x%10;
+            return O(x/10);
+        }
+    }
+    public static int P(int x){
+        if(x == 0 || x == 1){
+            return x;
+        }
+        else{
+            return P(x-1) + P(x-2);
+        }
+    }
+    
+    void hcf(int x, int y){
+         
+        h = (x>y)?y:x;
+        int h_ans = N(x,y);
+        System.out.println("HCF : "+h_ans);
+    }
+    
+    void lcm(int x, int y){
+        l = (x>y)?x:y;
+        int l_ans = M(x, y);
+        System.out.println("LCM : "+l_ans);
+    }
+    
+    int power(int x, int y){
+        if (y == 1){
+            return x;
+        }
+        else{
+            return (x * power(x, y-1));
+        }
+    }
+    
+    void fibbo(int x){
+        for (int i=0; i<=x; i++){
+            System.out.print(P(i)+"\t");
+        }
+    }
+    
+    void reverse(int x){
+        int O_ans = O(x);
+        System.out.println("Reverse num : "+O_ans);
+    }
+    
+    int sumUptoN(int x){
+        if(x == 1){
+            return 1;
+        }
+        else{
+            return (x + sumUptoN(x-1)); 
+        }
+    }
+    
+    int sumOfDigits(int x){
+        if(x == 0){
+            return sum;
+        }
+        else{
+            sum += x%10;
+            return sumOfDigits(x/10);
+        }
+    }
+}
+
+class Main{
+    public static void main(String args[]){
+        int X,Y,n;
+        Execution e = new Execution();
+        Scanner s = new Scanner(System.in);
+        System.out.print("Enter \n1.LCM & HCF \n2.X^Y \n3.Fibbo \n4.Reverse of the number \n5.Sum upto n \n6.Sum of Digits\n : ");
+        int choice = s.nextInt();
+        switch(choice){
+            case 1:
+                System.out.println("Enter value of X : ");
+                X = s.nextInt();
+                System.out.println("Enter value of Y : ");
+                Y = s.nextInt();
+                e.lcm(X, Y);
+                e.hcf(X, Y);
+                break;
+            case 2:
+                System.out.println("Enter value of X : ");
+                X = s.nextInt();
+                System.out.println("Enter value of Y : ");
+                Y = s.nextInt();
+                System.out.println("X^Y : "+e.power(X, Y));
+                break;
+            case 3:
+                System.out.println("Enter value of n : ");
+                n = s.nextInt();
+                System.out.println("The Fibbo series : ");
+                e.fibbo(n);
+                break;
+            case 4:
+                System.out.println("Enter value of n : ");
+                n = s.nextInt();
+                e.reverse(n);
+                break;
+            case 5:
+                System.out.println("Enter value of n : ");
+                n = s.nextInt();
+                System.out.println("Sum Upto N : " + e.sumUptoN(n));
+                break;
+            case 6:
+                System.out.println("Enter value of n : ");
+                n = s.nextInt();
+                System.out.println("Sum of digits : " + e.sumOfDigits(n));
+                break;
+        }
+    }
+}

@@ -1,0 +1,80 @@
+import java.util.*;
+
+abstract class Shape
+{
+  float a;
+  Scanner s = new Scanner (System.in);
+  abstract void input ();
+  abstract void calculate ();
+  void output ()
+  {
+    System.out.println ("The Area is : " + a);
+  }
+}
+
+class Circle extends Shape
+{
+  float r;
+  void input ()
+  {
+    System.out.print ("Enter Radius : ");
+    r = super.s.nextFloat ();
+  }
+  void calculate ()
+  {
+    super.a = 3.14f * r * r;
+  }
+}
+
+
+class Rectangle extends Shape
+{
+  float l, b;
+  void input ()
+  {
+    System.out.print ("Enter Length : ");
+    l = super.s.nextFloat ();
+    System.out.print ("Enter Breath : ");
+    b = super.s.nextFloat ();
+  }
+  void calculate ()
+  {
+    super.a = l * b;
+  }
+}
+
+
+class Triangle extends Shape
+{
+  float h, b;
+  void input ()
+  {
+    System.out.print ("Enter Heigth : ");
+    h = super.s.nextFloat ();
+    System.out.print ("Enter Breath : ");
+    b = super.s.nextFloat ();
+  }
+  void calculate ()
+  {
+    super.a = 0.5f * h * b;
+  }
+}
+
+class Main
+{
+  public static void main (String args[])
+  {
+    Circle c = new Circle ();
+      c.input ();
+      c.calculate ();
+      c.output ();
+    Rectangle r = new Rectangle ();
+      r.input ();
+      r.calculate ();
+      r.output ();
+    Triangle t = new Triangle ();
+      t.input ();
+      t.calculate ();
+      t.output ();
+  }
+}

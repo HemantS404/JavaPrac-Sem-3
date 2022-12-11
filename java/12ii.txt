@@ -1,0 +1,105 @@
+import java.util.*;
+
+class Result{
+    private String name, date;
+    private int seatno, centerno, math_marks, phy_marks, chem_marks;
+    static int check(int x) throws MarksOutOfBoundsException{
+        if(x>100 || x<0){
+            throw new MarksOutOfBoundsException();
+        }
+        else{
+            return x;
+        }
+    }
+    void setName(String x){
+        name = x;
+    }
+    void setDate(String x){
+        date = x;
+    }
+    void setSeatNo(int x){
+        seatno = x;
+    }
+    void setCenterNo(int x){
+        centerno = x;
+    }
+    void setMathMarks(int x){
+        try{
+            math_marks = check(x);
+        }
+        catch(Exception e){
+            System.out.println("Please Enter A Valid Marks");            
+        }
+    }
+    void setPhyMarks(int x){
+        try{
+            phy_marks = check(x);
+        }
+        catch(Exception e){
+            System.out.println("Please Enter A Valid Marks");            
+        }
+    }
+    void setChemMarks(int x){
+        try{
+            chem_marks = check(x);
+        }
+        catch(Exception e){
+            System.out.println("Please Enter A Valid Marks");            
+        }
+    }
+    String getName(){
+        return name;
+    }
+    String getDate(){
+        return date;
+    }
+    int getSeatNo(){
+        return seatno;
+    }
+    int getCenterNo(){
+        return centerno;
+    }
+    int getMathMarks(){
+        return math_marks;
+    }
+    int getPhyMarks(){
+        return phy_marks;
+    }
+    int getChemMarks(){
+        return chem_marks;
+    }
+}
+
+class MarksOutOfBoundsException extends Exception{
+    MarksOutOfBoundsException(){
+        System.out.println("Invalid Marks");
+    }
+}
+
+class Main{
+    public static void main(String args[]){
+        Result r = new Result();
+        Scanner s = new Scanner(System.in);
+        System.out.print("Enter Name : ");
+        r.setName(s.nextLine());
+        System.out.print("Enter Date : ");
+        r.setDate(s.nextLine());
+        System.out.print("Enter Seat Number : ");
+        r.setSeatNo(s.nextInt());
+        System.out.print("Enter Center Number : ");
+        r.setCenterNo(s.nextInt());
+        System.out.print("Enter Maths marks : ");
+        r.setMathMarks(s.nextInt());
+        System.out.print("Enter Physics Marks : ");
+        r.setPhyMarks(s.nextInt());
+        System.out.print("Enter Chemistry marks : ");
+        r.setChemMarks(s.nextInt());
+        System.out.println("\nStudent Name : "+r.getName());
+        System.out.println("Date of Exam : "+r.getDate());
+        System.out.println("Seat Number : "+r.getSeatNo());
+        System.out.println("Center Number : "+r.getCenterNo());
+        System.out.println("Maths Marks : "+r.getMathMarks());
+        System.out.println("Physics Marks : "+r.getPhyMarks());
+        System.out.println("Chemistry Marks : "+r.getChemMarks());
+    }
+}

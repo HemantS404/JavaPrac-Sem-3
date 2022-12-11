@@ -1,0 +1,55 @@
+import java.util.*;
+
+class Main{
+    public static void main(String args[]){
+        Scanner s =new Scanner(System.in);
+        System.out.print("enter 4 digit number : ");
+        int num = s.nextInt();
+        int num_clone = num;
+        int i,j,k,l;
+        int flag = 0;
+        int arr[] = new int[4];
+        for (i=0; i<4; i++){
+            arr[i] = num%10;
+            num /= 10;
+        }
+        for(i=0; i<4; i++){
+            for(j=0; j<4; j++){
+                if(i != j){
+                    int a = arr[i]*10 +arr[j];
+                    for(k=0; k<4; k++){
+                        if (k!= i && k!=j){
+                            break;
+                        }
+                    }
+                    for(l=0; l<4; l++){
+                        if (l!= i && l!=j && l!=k){
+                            break;
+                        }
+                    }
+                    int b = arr[k]*10 +arr[l];
+                    int c = arr[l]*10 +arr[k];
+                    if(a*b == num_clone){
+                        flag = 1;
+                        System.out.println(a+"*"+b+"="+num_clone);
+                        break;
+                    }
+                    else if (a*c == num_clone){
+                        flag = 1;
+                        System.out.println(a+"*"+c+"="+num_clone);
+                        break;
+                    }
+                }
+            }
+            if (flag == 1){
+                break;
+            }
+        }
+        if(flag == 1){
+            System.out.println(num_clone +" is a Vampire number");
+        }
+        else{
+            System.out.println(num_clone +" is not a Vampire number");
+        }
+    }
+}

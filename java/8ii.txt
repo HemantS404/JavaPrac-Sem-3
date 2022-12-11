@@ -1,0 +1,61 @@
+import java.util.*;
+
+class Rectangle extends Object{
+    int l, b;
+    Rectangle(){
+        Scanner s = new Scanner(System.in);
+        System.out.print("\nEnter Rectangle length : ");
+        l = s.nextInt();
+        System.out.print("Enter Rectangle Breath : ");
+        b = s.nextInt();
+    }
+    Rectangle(int l, int b){
+        this.l = l;
+        this.b = b;
+    }
+    int area(){
+        return (l*b);
+    }
+}
+
+class Cube extends Object{
+    int l;
+    Cube(){
+        Scanner s = new Scanner(System.in);
+        System.out.print("\nEnter Cube Side length : ");
+        l = s.nextInt();
+    }
+    Cube(int l){
+        this.l = l;
+    }
+    int volume(){
+        return (l*l*l);
+    }
+}
+
+
+class Size{
+    int size(String z){
+        if (z == "Rectangle"){
+            Rectangle r = new Rectangle();
+            return r.area();
+        }
+        else if(z == "Cube"){
+            Cube c = new Cube();
+            return c.volume();
+        } 
+        else{
+            return -1;
+        }
+    }
+}
+
+
+class Main{
+    public static void main(String args[]){
+        Size si = new Size();
+        System.out.println("\nRectangle area : "+si.size("Rectangle"));
+        System.out.println("\nCube volume : "+si.size("Cube"));
+        System.out.println("\nSize : "+si.size("Triangle"));
+    }
+}

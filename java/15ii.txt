@@ -1,0 +1,53 @@
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
+
+class Buttons extends JFrame implements ActionListener{
+	Container c;
+	JLabel lb; 
+	JButton btn1,btn2,btn3,btn4;
+	Buttons(){
+		c = getContentPane();
+		lb = new JLabel();
+		btn1 = new JButton("Button 1");
+		btn2 = new JButton("Button 2");
+		btn3 = new JButton("Button 3");
+		btn4 = new JButton("Button 4");
+		
+		btn1.addActionListener(this);
+		btn2.addActionListener(this);
+		btn3.addActionListener(this);
+		btn4.addActionListener(this);
+
+		c.add(btn1);
+		c.add(btn2);
+		c.add(btn3);
+		c.add(btn4);
+		c.add(lb);
+	}
+	public void actionPerformed(ActionEvent ae){
+		if(ae.getSource() == btn1){
+			lb.setText("Button 1 Pressed");
+		}
+		else if(ae.getSource() == btn2){
+			lb.setText("Button 2 Pressed");
+		}
+		else if(ae.getSource() == btn3){
+			lb.setText("Button 3 Pressed");
+		}
+		else{
+			lb.setText("Button 4 Pressed");
+		}
+	}
+}
+
+class Main{
+	public static void main(String args[]){
+		Buttons bb = new Buttons();
+		bb.setVisible(true);
+		bb.setSize(400,150);
+		bb.setLocation(500,300);
+		bb.setLayout(new FlowLayout());
+		bb.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); 
+	}
+}

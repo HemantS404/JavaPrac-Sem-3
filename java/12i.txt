@@ -1,0 +1,24 @@
+class Main{
+	public static void main(String args[]){
+		int i = 0, number_of_int = 0, number_of_non_int = 0;
+		Boolean flag = true;
+		while(flag){
+			try{
+				String a = args[i];
+				try{
+					int j = Integer.parseInt(a);
+					number_of_int ++;	
+				}
+				catch(Exception e){
+					number_of_non_int ++;
+				}
+				i++;
+			}
+			catch(Exception e){
+				flag = false;
+			}
+		}
+		System.out.println("No of Int : "+number_of_int);
+		System.out.println("No of Non Int : "+number_of_non_int);
+	}
+}

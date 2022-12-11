@@ -1,0 +1,50 @@
+import java.util.*;
+
+class Main{
+    static int c =0;
+    static int v[] = new int[50];
+    public static void main(String args[]){
+        Scanner s = new Scanner(System.in);
+        System.out.print("\nEnter String 1 : ");
+        String s1 = s.nextLine(); 
+        System.out.print("\nEnter String 2 : ");
+        String s2 = s.nextLine();
+        String s3;
+        if(s2.equals(s1) ){
+            System.out.println("\nIs NOT a Meta String\n");
+        }
+        else{
+           StringBuffer sb1 = new StringBuffer(s1);
+           StringBuffer sb2 = new StringBuffer(s2);
+           if(sb1.length() != sb2.length()){
+               System.out.println("\nIs NOT a Meta String\n");
+           }
+           else{
+               for(int i=0; i<sb1.length(); i++){
+                   if(sb1.charAt(i) != sb2.charAt(i)){
+                       v[c] = i;
+                       c++;
+                   }
+               }
+               if(c != 2){
+                   System.out.println("\nIs NOT a Meta String\n");
+               }
+               else{
+                   char temp1 = sb2.charAt(v[0]);
+                   char temp2 = sb2.charAt(v[1]);
+                   sb2.deleteCharAt(v[0]);
+                   sb2.insert(v[0], temp2);
+                   sb2.deleteCharAt(v[1]);
+                   sb2.insert(v[1], temp1);
+                   s3 = sb2.toString();
+                   if(s1.equals(s3)){
+                       System.out.println("\nIs a Meta String\n");
+                   }
+                   else{
+                       System.out.println("\nIs NOT a Meta String\n");
+                   }
+               }
+           }
+        }
+    }
+}

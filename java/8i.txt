@@ -1,0 +1,31 @@
+import java.util.*;
+
+class Area
+{
+  int l, b;
+    Area (int l)
+  {
+    this.l = l;
+    System.out.println ("Area of Square : " + (l * l));
+  }
+  Area (int l, int b)
+  {
+    this.l = l;
+    this.b = b;
+    System.out.println ("Area of Rectangle : " + (l * b));
+  }
+}
+
+class Main{
+    public static void main(String args[]){
+        Scanner s = new Scanner(System.in);
+        System.out.print("Enter Side of square : ");
+        int a = s.nextInt(); 
+        System.out.print("Enter Length of rectangle : ");
+        int b = s.nextInt(); 
+        System.out.print("Enter Breath of rectangle : ");
+        int c = s.nextInt();
+        Area ar1 = new Area(a);
+        Area ar2 = new Area(b,c);
+    }
+}

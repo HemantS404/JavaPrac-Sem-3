@@ -1,0 +1,57 @@
+import java.util.*;
+
+class Student{
+    String name;
+    int id, math, chem, phy, total;
+    Student(String name, int id, int math, int chem, int phy){
+        this.name = name;
+        this.id = id;
+        this.math = math;
+        this.chem = chem;
+        this.phy = phy;
+    }
+    void total(){
+        total = math+chem+phy;
+    }
+}
+
+class Main{
+    public static void main(String args[]){
+        Scanner s = new Scanner(System.in);
+        Student stu[] = new Student[4];
+        for(int i=0; i<4; i++){
+            System.out.print("\nEnter name : ");
+            String name = s.nextLine();
+            System.out.print("Enter ID : ");
+            int id = s.nextInt();
+            System.out.print("Enter maths marks : ");
+            int math = s.nextInt();
+            System.out.print("Enter chemistry marks : ");
+            int chem = s.nextInt();
+            System.out.print("Enter physics marks : ");
+            int phy = s.nextInt();
+            s.nextLine();
+            Student s1 = new Student(name, id, math, chem, phy);
+            s1.total();
+            stu[i] = s1;
+        }
+        for(int i=0; i<4; i++){
+            for(int j=0; j<3-i; j++){
+                if(stu[j].total < stu[j+1].total){
+                    Student s2;
+                    s2 = stu[j];
+                    stu[j] = stu[j+1];
+                    stu[j+1] = s2;
+                }
+            }
+        }
+        
+        System.out.println();
+        for(int i=0; i<4; i++){
+            System.out.println("Name : "+stu[i].name);
+            System.out.println("ID : "+stu[i].id);
+            System.out.println("Total : "+stu[i].total);
+            System.out.println();
+        }
+    }
+}

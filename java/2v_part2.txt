@@ -1,0 +1,25 @@
+ import java.util.*;
+
+ 
+ class Main{
+     public static void main(String args[]){
+         Scanner s = new Scanner(System.in);
+         System.out.print("Enter no. of rows : ");
+         int n = s.nextInt();
+         int c = 0;
+         int y;
+         for(int i = 1; i<=n; i++){
+            y=c+i;
+            for(int j = n-i; j>0; j--){
+                System.out.print(" ");
+            }
+            for(int j = i; j>0; j--){
+                char k = (char)(64+y);
+                System.out.print(k);
+                c++;
+                y--;
+            }
+            System.out.println();
+         }
+     }
+ }

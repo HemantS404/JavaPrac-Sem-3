@@ -1,0 +1,59 @@
+class Student{
+    private int roll_no;
+    void setRollNo(int x){
+        roll_no = x;
+    }
+    int getRollNo(){
+        return roll_no;
+    }
+}
+
+class Test extends Student{ 
+    private int sem1_marks;
+    private int sem2_marks;
+    void setSem1Marks(int x){
+        sem1_marks = x;
+    }
+    void setSem2Marks(int x){
+        sem2_marks = x;
+    }
+    int getSem1Marks(){
+        return sem1_marks;
+    }
+    int getSem2Marks(){
+        return sem2_marks;
+    }
+}
+
+interface Sports{
+    void score(int x);
+    int score();
+}
+
+class Result extends Test implements Sports{
+    private int total, score;
+    public void score(int x){
+        score = x;
+    }
+    public int score(){
+        return score;
+    }
+    void calculate(){
+        total =  getSem1Marks()+getSem2Marks()+score();
+    }
+    int getTotal(){
+        return total;
+    }
+}
+
+class Main{
+    public static void main(String args[]){
+        Result r = new Result();
+        r.setRollNo(3);
+        r.setSem1Marks(24);
+        r.setSem2Marks(25);
+        r.score(25);
+        r.calculate();
+        System.out.println("Student Roll no. : "+r.getRollNo()+", got Total : "+r.getTotal());
+    }
+}

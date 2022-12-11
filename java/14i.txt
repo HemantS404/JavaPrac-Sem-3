@@ -1,0 +1,87 @@
+import javax.swing.*;
+import java.awt.event.*;
+import java.awt.*;
+
+class Awt extends JFrame implements ActionListener{
+    Container c;
+    JLabel l1,l2,l3,l4;
+    JButton btn1,btn2;
+    JRadioButton m,f;
+    String deptarment[] = {"Comp","It","Mech"};
+    JComboBox<String> dept = new JComboBox<String>(deptarment); 
+    JTextField txt1,txt2,txt3,txt4;
+    JTextArea txtar;
+
+    
+    Awt(){
+        l1= new JLabel("Name : ");
+        l2= new JLabel("SapID : ");
+        l3= new JLabel("Address : ");
+        l4= new JLabel("Phone No :");
+        btn1 = new JButton("Sumbit");
+        btn2 = new JButton("Clear");
+        txtar = new JTextArea(50,70);
+        txt1 = new JTextField(20);
+        txt2 = new JTextField(20);
+        txt3 = new JTextField(20);
+        txt4 = new JTextField(20);
+        m = new JRadioButton("Male");
+        f = new JRadioButton("Female");
+
+        ButtonGroup bn = new ButtonGroup();
+        bn.add(m);
+        bn.add(f);
+        btn1.addActionListener(this);
+        btn2.addActionListener(this);
+
+        c = getContentPane();
+        c.add(l1);
+        c.add(txt1);
+        c.add(l2);
+        c.add(txt2);
+        c.add(l3);
+        c.add(txt3);
+        c.add(l4);
+        c.add(txt4);
+        c.add(m);
+        c.add(f);
+        c.add(dept);
+        c.add(btn1);
+        c.add(btn2);
+        c.add(txtar);
+    }
+
+    public void actionPerformed(ActionEvent ae){
+        if(btn1 == ae.getSource()){
+            String s = "\nName : "+txt1.getText()+"\nSapID : "+txt2.getText()+"\nAddress : "+txt3.getText()+"\nPhone : "+txt4.getText()+"\nDeparment : "+dept.getSelectedItem();
+            if( m.isSelected()){
+                s = s+"\nGender : Male";
+            }
+            else if( f.isSelected()){
+                s = s+"\nGender : Female";
+            }
+            Font font = new Font("Arial", 2, 14);
+            JOptionPane.showMessageDialog(c ,s);
+            txtar.setText(s);
+            txtar.setFont(font);
+        }
+        else{
+            txt1.setText("");
+            txt2.setText("");
+            txt3.setText("");
+            txt4.setText("");
+            txt1.requestFocus();
+        }
+    }
+}
+
+class Main{
+    public static void main(String args[]){
+        Awt aw = new Awt();
+        aw.setVisible(true);
+        aw.setSize(400,400);
+        aw.setLocation(500,300);
+        aw.setLayout(new FlowLayout());
+        aw.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    }
+}

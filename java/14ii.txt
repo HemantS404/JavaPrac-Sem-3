@@ -1,0 +1,62 @@
+import javax.swing.*;
+import java.awt.event.*;
+import java.awt.*;
+
+class Awt extends JFrame implements ActionListener{
+    Container c;
+    JLabel l1,l2;
+    JButton btn1,btn2; 
+    JTextField txt1;
+    JPasswordField txt2;
+    JTextArea txtar;
+
+    
+    Awt(){
+        l1= new JLabel("Login :        ");
+        l2= new JLabel("Password : ");
+        btn1 = new JButton("OK");
+        btn2 = new JButton("RESET");
+        txtar = new JTextArea(20,20);
+        txt1 = new JTextField(20);
+        txt2 = new JPasswordField(20);
+
+        btn1.addActionListener(this);
+        btn2.addActionListener(this);
+
+        c = getContentPane();
+        c.add(l1);
+        c.add(txt1);
+        c.add(l2);
+        c.add(txt2);
+        c.add(btn1);
+        c.add(btn2);
+        c.add(txtar);
+    }
+
+    public void actionPerformed(ActionEvent ae){
+        if(btn1 == ae.getSource()){
+            String s = "\nLogin : "+txt1.getText()+"\nPassword : "+txt2.getText();
+
+            Font font = new Font("Arial", 2, 14);
+            JOptionPane.showMessageDialog(c ,s);
+            txtar.setText(s);
+            txtar.setFont(font);
+        }
+        else{
+            txt1.setText("");
+            txt2.setText("");
+            txt1.requestFocus();
+        }
+    }
+}
+
+class Main{
+    public static void main(String args[]){
+        Awt aw = new Awt();
+        aw.setVisible(true);
+        aw.setSize(300,300);
+        aw.setLocation(500,300);
+        aw.setLayout(new FlowLayout());
+        aw.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    }
+}

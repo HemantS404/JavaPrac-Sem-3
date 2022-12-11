@@ -1,0 +1,66 @@
+
+
+class Five implements Runnable{
+    public void run(){
+        long start_5 = System.currentTimeMillis();
+        for(int i = 1; i < 11; i++){
+            try{
+                System.out.println("5 * "+i+" = "+(5*i));
+                Thread.currentThread().sleep(1500);
+            }
+            catch(Exception e){
+                
+            }
+        }
+        long end_5 = System.currentTimeMillis();
+        System.out.println("Time Taken for 5 : "+(end_5-start_5));
+    }
+}
+
+class Seven implements Runnable{
+    public void run(){
+        long start_7 = System.currentTimeMillis();
+        for(int i = 1; i < 11; i++){
+            try{
+                System.out.println("7 * "+i+" = "+(7*i));
+                Thread.currentThread().sleep(1500);
+            }
+            catch(Exception e){
+                
+            }
+        }
+        long end_7 = System.currentTimeMillis();
+        System.out.println("Time Taken for 7 : "+(end_7-start_7));
+    }
+}
+
+class Thirteen implements Runnable{
+    public void run(){
+        long start_13 = System.currentTimeMillis();
+        for(int i = 1; i < 11; i++){
+            try{
+                System.out.println("13 * "+i+" = "+(13*i));
+                Thread.currentThread().sleep(1500);
+            }
+            catch(Exception e){
+                
+            }
+        }
+        long end_13 = System.currentTimeMillis();
+        System.out.println("Time Taken for 13 : "+(end_13-start_13));
+    }
+}
+
+class Main{
+    public static void main(String args[]){
+        Five f = new Five();
+        Seven s = new Seven();
+        Thirteen t = new Thirteen();
+        Thread t1 = new Thread(f);
+        Thread t2 = new Thread(s);
+        Thread t3 = new Thread(t);
+        t1.start();
+        t2.start();
+        t3.start();
+    }
+}

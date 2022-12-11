@@ -1,0 +1,61 @@
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
+
+class MyInfo extends JFrame implements ActionListener{
+	Container c;
+	JLabel lb1,lb2,lb3,lb4;
+	JTextArea tx;
+	JTextField txt1,txt2,txt3,txt4; 
+	JButton btn1;
+	MyInfo(){
+		c = getContentPane();
+		lb1 = new JLabel("Name");
+		lb2 = new JLabel("Street");
+		lb3 = new JLabel("City");
+		lb4 = new JLabel("PIN");
+		tx = new JTextArea();
+		txt1 = new JTextField(20);
+		txt2 = new JTextField(20);
+		txt3 = new JTextField(20);
+		txt4 = new JTextField(20);
+
+		btn1 = new JButton("MY Info");
+		
+		btn1.addActionListener(this);
+		Font font = new Font("Arial", Font.ITALIC, 32) ;
+		tx.setFont(font);
+
+		
+		c.add(lb1);
+		c.add(txt1);
+		c.add(lb2);
+		c.add(txt2);
+		c.add(lb3);
+		c.add(txt3);
+		c.add(lb4);
+		c.add(txt4);
+		c.add(btn1);
+		c.add(tx);
+	}
+	public void actionPerformed(ActionEvent ae){
+		tx.setText("Name : "+txt1.getText()+"\nStreet : "+txt2.getText()+"\nCity : "+txt3.getText()+"\nPinCode : "+txt4.getText());
+		txt1.setText("");
+		txt2.setText("");
+		txt3.setText("");
+		txt4.setText("");
+		txt1.requestFocus();
+	}
+}
+
+class Main{
+	public static void main(String args[]){
+		MyInfo bb = new MyInfo();
+		bb.setVisible(true);
+		bb.setSize(1000,400);
+		bb.setLocation(300,300);
+		bb.setLayout(new FlowLayout());
+		bb.setTitle("MY INFO");
+		bb.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); 
+	}
+}

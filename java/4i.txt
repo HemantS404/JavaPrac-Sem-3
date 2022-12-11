@@ -1,0 +1,42 @@
+import java.util.*;
+
+class Main{
+    public static void main(String args[]){
+        Vector<String> v = new Vector<String>();
+        Scanner s = new Scanner(System.in);
+        Boolean flag = true;
+        while(flag){
+            System.out.print("\nEnter\n1.To add item\n2.Display shopping list\n3.Delete an item\n4.Exit\n : ");
+            int i = s.nextInt();
+            switch(i){
+                case 1 :
+                    s.nextLine();
+                    System.out.print("\nItem Name : ");
+                    String b = s.nextLine();
+                    System.out.print("\nAt Which Position : ");
+                    int c = s.nextInt();
+                    if(c>v.size()){
+                        v.add(b);
+                    }
+                    else if(c<0){
+                        v.add(0, b);
+                    }
+                    else{
+                        v.add(c, b);
+                    }
+                    break;
+                case 2 : 
+                    System.out.print("\nAll items : "+v+"\n");
+                    break;
+                case 3 : 
+                    s.nextLine();
+                    System.out.print("\nItem Name to be Deleted : ");
+                    b = s.nextLine();
+                    v.remove(b);
+                    break;
+                case 4 : flag = false;break;
+                default : System.out.println("\nEnter a valid number\n");
+            }
+        }
+    }
+}

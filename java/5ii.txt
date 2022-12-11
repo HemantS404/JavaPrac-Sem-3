@@ -1,0 +1,33 @@
+import java.util.*;
+
+class Main{
+    static int alpha,digits,special,spaces,words,vowels,consonants;
+    public static void main(String args[]){
+        Scanner s = new Scanner(System.in);
+        System.out.print("Enter a sentence : ");
+        StringBuffer sb = new StringBuffer(s.nextLine());
+        for(int i=0; i<sb.length(); i++){
+            char ch = sb.charAt(i);
+            if((ch>='a' && ch<='z') || (ch>='A' && ch<='Z')){
+                alpha++;
+                if(ch == 'a'||ch == 'e'||ch == 'i'||ch == 'o'||ch == 'u'||ch == 'A'||ch == 'E'||ch == 'I'||ch == 'O'||ch == 'U'){
+                    vowels++;
+                }
+                else{
+                    consonants++;
+                }
+            }
+            else if(ch>='0' && ch<='9'){
+                digits++;
+            }
+            else if(ch == ' '){
+                spaces++;
+            }
+            else{
+                special++;
+            }
+            words = spaces+1;
+        }
+        System.out.println("Aphabets : "+alpha+"\nVowels : "+vowels+"\nConsonants : "+consonants+"\nDigits : "+digits+"\nSpaces : "+spaces+"\nSpecail : "+special+"\nWords : "+words);
+    }
+}

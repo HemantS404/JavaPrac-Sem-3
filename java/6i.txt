@@ -1,0 +1,25 @@
+import java.util.*;
+
+class Area{
+    void area(int l){
+        System.out.println("Area of Square = "+ (l*l));
+    }
+    void area(int l, int b){
+        System.out.println("Area of Rectangle = "+ (l*b));
+    }
+}
+
+class Main{
+    public static void main(String args[]){
+        Area a = new Area();
+        Scanner s = new Scanner(System.in);
+        System.out.print("Enter Side of Square : ");
+        int x = s.nextInt();
+        System.out.print("Enter Length of Rectangle : ");
+        int y = s.nextInt();
+        System.out.print("Enter Breath of Rectangle : ");
+        int z = s.nextInt();
+        a.area(x);
+        a.area(y, z);
+    }
+}

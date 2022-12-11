@@ -1,0 +1,22 @@
+import java.util.*;
+
+class Main{
+    public static void main(String args[]){
+        Scanner s = new Scanner(System.in);
+        System.out.print("Enter A : ");
+        float a = s.nextFloat();
+        System.out.print("Enter B : ");
+        float b = s.nextFloat();
+        System.out.print("Enter C : ");
+        float c = s.nextFloat();
+        float D = b*b - 4*a*c;
+        if (D<0){
+            System.out.println("Imaginary Roots");
+        }
+        else{
+            float x1 = (-b + D)/(2*a);
+            float x2 = (-b - D)/(2*a);
+            System.out.println("Roots = "+x1+", "+x2);
+        }
+    }
+}

@@ -1,0 +1,43 @@
+import java.util.*;
+
+class Main{
+    public static void main(String args[]){
+        Scanner s = new Scanner(System.in);
+        System.out.print("Enter no. Rows : ");
+        int rows = s.nextInt();
+        System.out.print("Enter no. Columns : ");
+        int columns = s.nextInt();
+        int column_sum[] = new int [columns];
+        int row_sum[] = new int [rows];
+        int arr[][] = new int[rows][columns];
+        int total_sum = 0;
+        System.out.println("Enter values in array");
+        for(int i = 0; i<rows; i++){
+            for(int j = 0; j<columns; j++){
+                System.out.print(" : ");
+                arr[i][j] = s.nextInt();
+            }
+        }
+        for(int j = 0; j<columns; j++){
+            for(int i = 0; i<rows; i++){
+                column_sum[j] += arr[i][j];
+            }
+        }
+        for(int i = 0; i<rows; i++){
+            for(int j = 0; j<columns; j++){
+                row_sum[i] += arr[i][j];
+            }
+        }
+        System.out.print("\nAll Columns Sum : ");
+        for(int j = 0; j<columns; j++){
+            System.out.print(column_sum[j]+"\t");
+        }
+        System.out.print("\nAll Rows Sum : ");
+        for(int j = 0; j<rows; j++){
+            total_sum +=row_sum[j];
+            System.out.print(row_sum[j]+"\t");
+        }
+        System.out.print("\nTotal : ");
+        System.out.print(total_sum);
+    }
+}
